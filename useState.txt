@@ -1,0 +1,47 @@
+import React from 'react';
+import './index.css'; // Link to your CSS file
+Example 1: How to use useState;
+export function App() {
+  const [counter, setCounter] = React.useState(0);
+  return (
+    <div>
+    <h2>Button is Clicked: {counter}</h2>
+    <button onClick={()=>{
+      setCounter(counter+1);
+    }}>Click</button>
+    </div>
+  );
+}
+
+
+Example 2: 
+updating state depending on previous state should not done directly. here,Why
+multi state
+export function App()
+{
+  const [counter1, setCounter1] = React.useState(0);
+  const [counter2, setCounter2] = React.useState(0);
+  return(
+    <div>
+    <h2>Number of times button clicked: {counter1} </h2>
+    <p>This click will not change as counter is not getting update </p>
+    <button onClick={()=>{
+      setInterval(()=>{
+        setCounter1(counter1+1)
+      }, 1000);
+    }}>Click setInterval</button>
+
+
+      <br/>
+    <h2>Number of times button clicked: {counter2} </h2>
+    <p>This click will not change as counter is not getting update </p>
+    <button onClick={()=>{
+      setInterval(()=>{
+        setCounter2((old)=> old+1)
+      }, 1000);
+    }}>Click </button>
+    </div>
+  )
+}
+
+
