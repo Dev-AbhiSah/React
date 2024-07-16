@@ -1,0 +1,61 @@
+import React from 'react';
+import './index.css'; // Link to your CSS file
+
+1  export function App() {
+  return React.createElement("h1",{ children: "check is ready"})
+}
+
+Example 2: 
+<div>
+<h2>This is</h2> 
+<h1>Alok</h1>
+</div>
+export function App(){
+return React.createElement("div", 
+{children: [
+              React.createElement("h2", { children: "This is"}), 
+              React.createElement("h1", {children: "Alok"})
+              ]})
+}
+
+Example 3:  passing prop 
+<div>
+  <Test name = Alok/>
+</div>
+
+export function App(){
+  return React.createElement("div", {children: React.createElement(Test, {name: "Alok"})})
+}
+
+function Test(props){
+  return React.createElement("h1", {children: `Mr ${props.name}`})
+}
+function Test({name}){
+  return (
+    <h1>Mr. {name}</h1>
+  )
+}
+
+
+example 4: passing Children
+<div>
+  <Test >Welcome! </Test>
+</div>
+export function App(){
+  return React.createElement("div", { children: React.createElement(Test, { children: "Welcome!"})})
+}
+function Test({children}){
+  return (
+    <div>
+    {children}
+    <h1>Alok</h1>
+    </div>
+  )
+}
+function  Test({children}){
+  return React.createElement("div", 
+  {children: [
+              `${children}`, React.createElement("h1", 
+              {children: "Alok"})
+              ]})
+}
