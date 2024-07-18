@@ -1,0 +1,35 @@
+import React ,{useState, useEffect} from 'react';
+import axios from 'axios'
+import './index.css'; // Link to your CSS file
+
+export function App() {
+  const[book,setBook] = useState([])
+  useEffect(()=>{
+    const bookList = axios.get("https://66981b3602f3150fb6701086.mockapi.io/book").then((response)=> {
+      setBook((old)=>{
+        const temp = [...response.data];
+        return temp;
+      })
+    }). catch((error)=> {
+      console.error("Error in fetching", error.message);
+    });
+    console.log("hi")
+   console.log(bookList);
+  }, [])
+  return (
+   <div>
+   <ul>
+   {
+    book.length === 0 ? "loading": <>
+      {book.map((value, index) =>{
+        return( <><li key="index">{value.name}</li><br/>
+        <img src ={value.avatar}/></>)
+      })}
+    </>
+   }
+   </ul>
+   </div>
+  );
+  }
+   
+

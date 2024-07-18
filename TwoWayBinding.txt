@@ -1,0 +1,29 @@
+export default function Search({setSearchText})
+{
+    function handelChange(e)
+    {
+        setSearchText(e.target.value);
+    }
+    
+    return (
+        <input onChange={(e)=>{
+            handelChange(e);
+        }} type="text" />
+    )
+}
+
+
+//              App Component
+
+import React from 'react';
+import './index.css'; // Link to your CSS file
+import Search from './Component/header.js'
+export function App() {
+  const [searchText, setSearchText] = React.useState('')
+  return (
+    <div className="App">
+     <Search setSearchText ={setSearchText}/>
+     <h1 className="main" >{searchText}</h1>
+    </div>
+  );
+}
